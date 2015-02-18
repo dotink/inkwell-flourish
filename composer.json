@@ -1,0 +1,26 @@
+{
+	"name": "dotink/inkwell-flourish",
+	"description": "Flourish integration for inKWell (God Save Us All)",
+	"keywords": ["retarded"],
+	"license": "AGPL-3.0",
+	"authors": [
+		{
+			"name": "Matthew J. Sahagian",
+			"email": "matt@imarc.net",
+			"role": "Developer"
+		}
+	],
+	"require": {
+		"php": ">=5.4.0",
+		"flourish/flourish": "dev-master"
+	},
+	"type": "opus-package",
+	"extra": {
+		"opus": {
+			"inkwell/framework": {
+				"plugin/config"  : "config",
+				"plugin/include" : "include"
+			}
+		}
+	}
+}
