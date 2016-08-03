@@ -5,7 +5,7 @@
 	/**
 	 *
 	 */
-	class Record extends fActiveRecord
+	trait Record
 	{
 		/**
 		 *

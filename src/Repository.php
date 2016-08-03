@@ -1,11 +1,16 @@
 <?php namespace Inkwell\Flourish
 {
+	use fRecordSet;
+use fProgrammerException;
+
 	/**
 	 *
 	 */
 	class Repository
 	{
 		const MODEL = NULL;
+
+		static protected $order = [];
 
 
 		/**
@@ -46,8 +51,29 @@
 		/**
 		 *
 		 */
-		public function save(Record $record)
+		public function findAll()
 		{
+			$model = static::MODEL;
+
+			return fRecordSet::build($model, [], static::$order);
+		}
+
+
+		/**
+		 *
+		 */
+		public function save($record)
+		{
+			$model = static::MODEL;
+
+			if (!($record instanceof $model)) {
+				throw new fProgrammerException(
+					'Cannot save model of class %s via repository for %s',
+					get_class($record),
+					static::MODEL
+				);
+			}
+
 			$record->store();
 		}
 
@@ -55,7 +81,7 @@
 		/**
 		 *
 		 */
-		protected function prepare(Record $entity)
+		protected function prepare($record)
 		{
 
 		}
